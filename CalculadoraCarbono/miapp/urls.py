@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .views import (
     UsuarioViewSet, RegistroHuellaCarbonoViewSet, MaterialViewSet, 
     RegistroReciclajeViewSet, FactorEmisionViewSet, RecomendacionViewSet,
-    RecomendacionUsuarioViewSet
+    RecomendacionUsuarioViewSet, api_root, token_tester
 )
 
 router = DefaultRouter()
@@ -18,7 +18,9 @@ router.register(r'recomendaciones', RecomendacionViewSet, basename='recomendacio
 router.register(r'mis-recomendaciones', RecomendacionUsuarioViewSet, basename='mis-recomendaciones')
 
 urlpatterns = [
+    path('', api_root, name='api-root'),
     path('', include(router.urls)),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token-tester/', token_tester, name='token_tester'),
 ]

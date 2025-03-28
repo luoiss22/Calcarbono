@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticación y Uso de Token JWT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            color: #2E7D32;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 5px solid #4CAF50;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="text"], input[type="password"] {
+            width: 250px;
+            padding: 8px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        pre {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            overflow: auto;
+            max-height: 300px;
+            white-space: pre-wrap;
+        }
+        .endpoints {
+            list-style-type: none;
+            padding: 0;
+        }
+        .endpoints li {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #e9f7ef;
+            border-radius: 3px;
+        }
+        .copy-btn {
+            background-color: #2196F3;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        .test-btn {
+            background-color: #FF9800;
+            padding: 5px 10px;
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        #token-display {
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <h1>Autenticación y Uso de Token JWT</h1>
+    
+    <div class="section">
+        <h2>1. Obtener Token de Autenticación</h2>
+        <div>
+            <input type="text" id="username" placeholder="Usuario">
+            <input type="password" id="password" placeholder="Contraseña">
+            <button onclick="obtenerToken()">Obtener Token</button>
+        </div>
+        <div id="token-response" style="margin-top: 15px;">
+            <strong>Token JWT:</strong>
+            <pre id="token-display">No se ha obtenido un token todavía.</pre>
+            <button class="copy-btn" onclick="copyToClipboard('token-display')">Copiar Token</button>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>2. Uso del Token para Acceder a la API</h2>
+        <p>Para usar el token en tus solicitudes, debes incluirlo en el encabezado de autorización:</p>
+        <pre>Authorization: Bearer eyJ0eXAiOi... (tu token JWT completo)</pre>
+        
+        <h3>Opciones para Usar tu Token:</h3>
+        <ol>
+            <li><strong>Navegador con Extensión:</strong> Instala una extensión que te permita modificar encabezados HTTP (como "ModHeader" para Chrome).</li>
+            <li><strong>Herramientas como Postman:</strong> Incluye el token en la sección de autenticación.</li>
+            <li><strong>Usar el Probador Integrado:</strong> Utiliza el navegador de API interactivo de Django REST Framework en la interfaz web.</li>
+            <li><strong>JavaScript:</strong> Prueba los endpoints directamente desde esta página.</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>3. Endpoints Disponibles</h2>
+        <ul class="endpoints" id="endpoints-list">
+            <li>
+                <strong>Obtener Token:</strong> /api/token/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-token')">Copiar</button>
+                <pre id="endpoint-token" style="display:none;">POST /api/token/
+{
+    "username": "tu_usuario",
+    "password": "tu_contraseña"
+}</pre>
+            </li>
+            <li>
+                <strong>Refrescar Token:</strong> /api/token/refresh/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-refresh')">Copiar</button>
+                <pre id="endpoint-refresh" style="display:none;">POST /api/token/refresh/
+{
+    "refresh": "tu_token_de_refresco"
+}</pre>
+            </li>
+            <li>
+                <strong>API Root:</strong> /api/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-root')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/')">Probar</button>
+                <pre id="endpoint-root" style="display:none;">GET /api/</pre>
+            </li>
+            <li>
+                <strong>Usuarios:</strong> /api/usuarios/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-usuarios')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/usuarios/')">Probar</button>
+                <pre id="endpoint-usuarios" style="display:none;">GET /api/usuarios/</pre>
+            </li>
+            <li>
+                <strong>Registro de Huella de Carbono:</strong> /api/huella-carbono/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-huella')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/huella-carbono/')">Probar</button>
+                <pre id="endpoint-huella" style="display:none;">GET /api/huella-carbono/</pre>
+            </li>
+            <li>
+                <strong>Materiales:</strong> /api/materiales/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-materiales')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/materiales/')">Probar</button>
+                <pre id="endpoint-materiales" style="display:none;">GET /api/materiales/</pre>
+            </li>
+            <li>
+                <strong>Registros de Reciclaje:</strong> /api/reciclaje/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-reciclaje')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/reciclaje/')">Probar</button>
+                <pre id="endpoint-reciclaje" style="display:none;">GET /api/reciclaje/</pre>
+            </li>
+            <li>
+                <strong>Factores de Emisión:</strong> /api/factores-emision/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-factores')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/factores-emision/')">Probar</button>
+                <pre id="endpoint-factores" style="display:none;">GET /api/factores-emision/</pre>
+            </li>
+            <li>
+                <strong>Recomendaciones:</strong> /api/recomendaciones/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-recomendaciones')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/recomendaciones/')">Probar</button>
+                <pre id="endpoint-recomendaciones" style="display:none;">GET /api/recomendaciones/</pre>
+            </li>
+            <li>
+                <strong>Mis Recomendaciones:</strong> /api/mis-recomendaciones/ 
+                <button class="copy-btn" onclick="copyToClipboard('endpoint-mis-recomendaciones')">Copiar</button>
+                <button class="test-btn" onclick="testEndpoint('/api/mis-recomendaciones/')">Probar</button>
+                <pre id="endpoint-mis-recomendaciones" style="display:none;">GET /api/mis-recomendaciones/</pre>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>4. Resultados de Prueba</h2>
+        <div id="endpoint-test-results">
+            <p>Los resultados de las pruebas aparecerán aquí.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Variable para almacenar el token
+        let currentToken = "";
+        
+        // Función para obtener token
+        async function obtenerToken() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Por favor ingresa usuario y contraseña');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/token/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    currentToken = data.access;
+                    document.getElementById('token-display').textContent = data.access;
+                } else {
+                    document.getElementById('token-display').textContent = 'Error: ' + JSON.stringify(data);
+                }
+            } catch (error) {
+                document.getElementById('token-display').textContent = 'Error de conexión: ' + error.message;
+            }
+        }
+        
+        // Función para copiar al portapapeles
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            
+            // Si el elemento está oculto, mostrarlo temporalmente
+            const wasHidden = element.style.display === 'none';
+            if (wasHidden) {
+                element.style.display = 'block';
+            }
+            
+            // Crear un rango de selección
+            const range = document.createRange();
+            range.selectNode(element);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            
+            // Copiar el texto seleccionado
+            document.execCommand('copy');
+            
+            // Limpiar la selección
+            window.getSelection().removeAllRanges();
+            
+            // Volver a ocultar si estaba oculto
+            if (wasHidden) {
+                element.style.display = 'none';
+            }
+            
+            alert('Copiado al portapapeles!');
+        }
+        
+        // Función para probar endpoints
+        async function testEndpoint(url) {
+            const resultsElement = document.getElementById('endpoint-test-results');
+            
+            // Mostrar mensaje de carga
+            resultsElement.innerHTML = '<p>Probando endpoint ' + url + '...</p>';
+            
+            try {
+                const headers = {};
+                
+                // Agregar token si existe
+                if (currentToken) {
+                    headers['Authorization'] = 'Bearer ' + currentToken;
+                }
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    headers: headers
+                });
+                
+                const data = await response.json();
+                
+                // Formatear y mostrar resultados
+                resultsElement.innerHTML = '<h3>Respuesta de ' + url + '</h3>' +
+                                         '<p><strong>Status:</strong> ' + response.status + '</p>' +
+                                         '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                resultsElement.innerHTML = '<h3>Error al probar ' + url + '</h3>' +
+                                          '<p>' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets, filters, status, permissions
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
+from rest_framework.reverse import reverse
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -26,7 +27,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     search_fields = ['username', 'email', 'nombre_completo']
     
     def get_permissions(self):
-        if self.action == 'create':
+        if self.action == 'create' or self.action == 'list':
             permission_classes = [permissions.AllowAny]
         else:
             permission_classes = [permissions.IsAuthenticated]
@@ -315,3 +316,45 @@ class RecomendacionUsuarioViewSet(viewsets.ModelViewSet):
         
         serializer = RecomendacionUsuarioSerializer(recomendacion_usuario)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([permissions.AllowAny])
+def token_tester(request):
+    """
+    Vista para la página de prueba de token JWT.
+    """
+    return render(request, 'miapp/token_tester.html')
+
+
+@api_view(['GET'])
+@permission_classes([permissions.AllowAny])
+def api_root(request, format=None):
+    """
+    Punto de entrada principal a la API de Calculadora de Huella de Carbono.
+    Para acceder a los endpoints protegidos, necesitas autenticarte:
+    
+    1. Obtén un token JWT en /api/token/
+    2. Incluye el token en el encabezado Authorization: Bearer <token>
+    """
+    return Response({
+        'endpoints_disponibles': {
+            'usuarios': reverse('usuario-list', request=request, format=format),
+            'huella_carbono': reverse('huella-carbono-list', request=request, format=format),
+            'materiales': reverse('material-list', request=request, format=format),
+            'reciclaje': reverse('reciclaje-list', request=request, format=format),
+            'factores_emision': reverse('factor-emision-list', request=request, format=format),
+            'recomendaciones': reverse('recomendacion-list', request=request, format=format),
+            'mis_recomendaciones': reverse('mis-recomendaciones-list', request=request, format=format),
+        },
+        'autenticacion': {
+            'obtener_token': reverse('token_obtain_pair', request=request, format=format),
+            'refrescar_token': reverse('token_refresh', request=request, format=format),
+            'probador_de_token': reverse('token_tester', request=request, format=format),
+        },
+        'documentacion': {
+            'swagger': '/swagger/',
+            'redoc': '/redoc/',
+        },
+        'mensaje': 'Para acceder, utiliza el login proporcionado o incluye un token JWT con el formato "Bearer <token>" en el encabezado Authorization.'
+    })
