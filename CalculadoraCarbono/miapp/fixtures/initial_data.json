@@ -1,0 +1,588 @@
+[
+  {
+    "model": "miapp.material",
+    "pk": 1,
+    "fields": {
+      "nombre": "Papel periódico",
+      "tipo": "PAPEL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 2.5,
+      "factor_reduccion_co2": 2.8
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 2,
+    "fields": {
+      "nombre": "Papel blanco de oficina",
+      "tipo": "PAPEL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 3.2,
+      "factor_reduccion_co2": 3.0
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 3,
+    "fields": {
+      "nombre": "Cartón",
+      "tipo": "PAPEL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 1.8,
+      "factor_reduccion_co2": 2.5
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 4,
+    "fields": {
+      "nombre": "Vidrio transparente",
+      "tipo": "VIDRIO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 0.9,
+      "factor_reduccion_co2": 0.3
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 5,
+    "fields": {
+      "nombre": "Vidrio de color",
+      "tipo": "VIDRIO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 0.7,
+      "factor_reduccion_co2": 0.3
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 6,
+    "fields": {
+      "nombre": "Plástico PET (botellas)",
+      "tipo": "PLASTICO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 7.0,
+      "factor_reduccion_co2": 2.3
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 7,
+    "fields": {
+      "nombre": "Plástico HDPE",
+      "tipo": "PLASTICO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 6.0,
+      "factor_reduccion_co2": 1.8
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 8,
+    "fields": {
+      "nombre": "Plástico LDPE (bolsas)",
+      "tipo": "PLASTICO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 5.0,
+      "factor_reduccion_co2": 1.7
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 9,
+    "fields": {
+      "nombre": "Aluminio (latas)",
+      "tipo": "METAL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 18.0,
+      "factor_reduccion_co2": 9.1
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 10,
+    "fields": {
+      "nombre": "Acero (latas)",
+      "tipo": "METAL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 4.5,
+      "factor_reduccion_co2": 1.8
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 11,
+    "fields": {
+      "nombre": "Cobre",
+      "tipo": "METAL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 75.0,
+      "factor_reduccion_co2": 3.3
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 12,
+    "fields": {
+      "nombre": "Residuos de alimentos",
+      "tipo": "ORGANICO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 0.0,
+      "factor_reduccion_co2": 0.24
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 13,
+    "fields": {
+      "nombre": "Residuos de jardín",
+      "tipo": "ORGANICO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 0.0,
+      "factor_reduccion_co2": 0.15
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 14,
+    "fields": {
+      "nombre": "Teléfonos móviles",
+      "tipo": "ELECTRONICO",
+      "unidad_medida": "unidad",
+      "valor_por_unidad": 50.0,
+      "factor_reduccion_co2": 35.0
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 15,
+    "fields": {
+      "nombre": "Ordenadores portátiles",
+      "tipo": "ELECTRONICO",
+      "unidad_medida": "unidad",
+      "valor_por_unidad": 200.0,
+      "factor_reduccion_co2": 150.0
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 16,
+    "fields": {
+      "nombre": "Baterías",
+      "tipo": "ELECTRONICO",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 15.0,
+      "factor_reduccion_co2": 12.0
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 17,
+    "fields": {
+      "nombre": "Ropa",
+      "tipo": "TEXTIL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 5.0,
+      "factor_reduccion_co2": 3.7
+    }
+  },
+  {
+    "model": "miapp.material",
+    "pk": 18,
+    "fields": {
+      "nombre": "Calzado",
+      "tipo": "TEXTIL",
+      "unidad_medida": "kg",
+      "valor_por_unidad": 10.0,
+      "factor_reduccion_co2": 5.0
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 1,
+    "fields": {
+      "categoria": "Electricidad",
+      "subcategoria": "Red Eléctrica",
+      "descripcion": "Factor de emisión promedio de la red eléctrica en México",
+      "valor": 0.527,
+      "unidad": "kg CO2/kWh",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "Comisión Reguladora de Energía"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 2,
+    "fields": {
+      "categoria": "Transporte",
+      "subcategoria": "Automóvil",
+      "descripcion": "Factor de emisión para automóviles de gasolina",
+      "valor": 0.192,
+      "unidad": "kg CO2/km",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "SEMARNAT"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 3,
+    "fields": {
+      "categoria": "Transporte",
+      "subcategoria": "Automóvil",
+      "descripcion": "Factor de emisión para automóviles diésel",
+      "valor": 0.171,
+      "unidad": "kg CO2/km",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "SEMARNAT"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 4,
+    "fields": {
+      "categoria": "Transporte",
+      "subcategoria": "Automóvil",
+      "descripcion": "Factor de emisión para automóviles híbridos",
+      "valor": 0.106,
+      "unidad": "kg CO2/km",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "SEMARNAT"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 5,
+    "fields": {
+      "categoria": "Transporte",
+      "subcategoria": "Automóvil",
+      "descripcion": "Factor de emisión para automóviles eléctricos",
+      "valor": 0.053,
+      "unidad": "kg CO2/km",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "SEMARNAT"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 6,
+    "fields": {
+      "categoria": "Transporte",
+      "subcategoria": "Autobús",
+      "descripcion": "Factor de emisión para autobuses por pasajero",
+      "valor": 0.105,
+      "unidad": "kg CO2/pasajero-km",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "SEMARNAT"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 7,
+    "fields": {
+      "categoria": "Transporte",
+      "subcategoria": "Tren",
+      "descripcion": "Factor de emisión para trenes por pasajero",
+      "valor": 0.041,
+      "unidad": "kg CO2/pasajero-km",
+      "region": "México",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "SEMARNAT"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 8,
+    "fields": {
+      "categoria": "Alimentos",
+      "subcategoria": "Carne Roja",
+      "descripcion": "Factor de emisión para producción de carne roja",
+      "valor": 27.0,
+      "unidad": "kg CO2/kg",
+      "region": "Global",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "FAO"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 9,
+    "fields": {
+      "categoria": "Alimentos",
+      "subcategoria": "Aves",
+      "descripcion": "Factor de emisión para producción de carne de aves",
+      "valor": 6.9,
+      "unidad": "kg CO2/kg",
+      "region": "Global",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "FAO"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 10,
+    "fields": {
+      "categoria": "Alimentos",
+      "subcategoria": "Pescado",
+      "descripcion": "Factor de emisión para producción de pescado",
+      "valor": 5.4,
+      "unidad": "kg CO2/kg",
+      "region": "Global",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "FAO"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 11,
+    "fields": {
+      "categoria": "Alimentos",
+      "subcategoria": "Lácteos",
+      "descripcion": "Factor de emisión para producción de lácteos",
+      "valor": 1.9,
+      "unidad": "kg CO2/kg",
+      "region": "Global",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "FAO"
+    }
+  },
+  {
+    "model": "miapp.factoremision",
+    "pk": 12,
+    "fields": {
+      "categoria": "Alimentos",
+      "subcategoria": "Frutas y Verduras",
+      "descripcion": "Factor de emisión para producción de frutas y verduras",
+      "valor": 0.5,
+      "unidad": "kg CO2/kg",
+      "region": "Global",
+      "fecha_actualizacion": "2023-12-01",
+      "fuente": "FAO"
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 1,
+    "fields": {
+      "categoria": "CONSUMO",
+      "descripcion": "Reduce el consumo de carne roja a 1-2 veces por semana",
+      "impacto_potencial": 220,
+      "nivel_dificultad": 3,
+      "beneficio_economico_estimado": 500
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 2,
+    "fields": {
+      "categoria": "CONSUMO",
+      "descripcion": "Compra productos locales y de temporada",
+      "impacto_potencial": 120,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 300
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 3,
+    "fields": {
+      "categoria": "CONSUMO",
+      "descripcion": "Evita el desperdicio de alimentos planificando tus comidas",
+      "impacto_potencial": 90,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 800
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 4,
+    "fields": {
+      "categoria": "TRANSPORTE",
+      "descripcion": "Usa transporte público en lugar del coche al menos 3 días a la semana",
+      "impacto_potencial": 300,
+      "nivel_dificultad": 3,
+      "beneficio_economico_estimado": 700
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 5,
+    "fields": {
+      "categoria": "TRANSPORTE",
+      "descripcion": "Practica el carpooling (compartir coche) para ir al trabajo",
+      "impacto_potencial": 180,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 600
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 6,
+    "fields": {
+      "categoria": "TRANSPORTE",
+      "descripcion": "Utiliza la bicicleta para trayectos cortos",
+      "impacto_potencial": 240,
+      "nivel_dificultad": 4,
+      "beneficio_economico_estimado": 1000
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 7,
+    "fields": {
+      "categoria": "ENERGIA",
+      "descripcion": "Cambia a bombillas LED en toda la casa",
+      "impacto_potencial": 150,
+      "nivel_dificultad": 1,
+      "beneficio_economico_estimado": 400
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 8,
+    "fields": {
+      "categoria": "ENERGIA",
+      "descripcion": "Desconecta aparatos electrónicos cuando no los uses",
+      "impacto_potencial": 100,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 300
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 9,
+    "fields": {
+      "categoria": "ENERGIA",
+      "descripcion": "Instala paneles solares en tu hogar",
+      "impacto_potencial": 1500,
+      "nivel_dificultad": 5,
+      "beneficio_economico_estimado": 5000
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 10,
+    "fields": {
+      "categoria": "RESIDUOS",
+      "descripcion": "Separa correctamente tus residuos para reciclaje",
+      "impacto_potencial": 200,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 0
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 11,
+    "fields": {
+      "categoria": "RESIDUOS",
+      "descripcion": "Crea un compostaje casero para residuos orgánicos",
+      "impacto_potencial": 120,
+      "nivel_dificultad": 3,
+      "beneficio_economico_estimado": 200
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 12,
+    "fields": {
+      "categoria": "RESIDUOS",
+      "descripcion": "Reduce el uso de productos de un solo uso",
+      "impacto_potencial": 150,
+      "nivel_dificultad": 3,
+      "beneficio_economico_estimado": 400
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 13,
+    "fields": {
+      "categoria": "RECICLAJE",
+      "descripcion": "Recicla papel y cartón regularmente",
+      "impacto_potencial": 110,
+      "nivel_dificultad": 1,
+      "beneficio_economico_estimado": 100
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 14,
+    "fields": {
+      "categoria": "RECICLAJE",
+      "descripcion": "Lleva tus dispositivos electrónicos viejos a puntos de reciclaje especializados",
+      "impacto_potencial": 180,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 50
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 15,
+    "fields": {
+      "categoria": "RECICLAJE",
+      "descripcion": "Dona ropa y objetos que ya no uses en lugar de tirarlos",
+      "impacto_potencial": 140,
+      "nivel_dificultad": 1,
+      "beneficio_economico_estimado": 0
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 16,
+    "fields": {
+      "categoria": "GENERAL",
+      "descripcion": "Usa bolsas de tela reutilizables para la compra",
+      "impacto_potencial": 70,
+      "nivel_dificultad": 1,
+      "beneficio_economico_estimado": 100
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 17,
+    "fields": {
+      "categoria": "GENERAL",
+      "descripcion": "Optimiza el uso del agua (duchas más cortas, cerrar el grifo)",
+      "impacto_potencial": 80,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 300
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 18,
+    "fields": {
+      "categoria": "GENERAL",
+      "descripcion": "Reduce el consumo de productos envasados",
+      "impacto_potencial": 90,
+      "nivel_dificultad": 3,
+      "beneficio_economico_estimado": 200
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 19,
+    "fields": {
+      "categoria": "GENERAL",
+      "descripcion": "Participa en iniciativas comunitarias de limpieza y conservación",
+      "impacto_potencial": 60,
+      "nivel_dificultad": 2,
+      "beneficio_economico_estimado": 0
+    }
+  },
+  {
+    "model": "miapp.recomendacion",
+    "pk": 20,
+    "fields": {
+      "categoria": "GENERAL",
+      "descripcion": "Planta árboles o crea un pequeño jardín en casa",
+      "impacto_potencial": 100,
+      "nivel_dificultad": 3,
+      "beneficio_economico_estimado": 0
+    }
+  }
+]

@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media and Static Files (if generated)
+media/
+static/
+
+# Migrations (optional - depends on project strategy)
+# **/migrations/*.py
+# !**/migrations/__init__.py
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Project Specific
+*.pid
+*.bak
+*.orig
+
+# Frontend (if applicable)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Secrets and Environment
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build and Distribution
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Backup files
+*.bak
